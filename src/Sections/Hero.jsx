@@ -5,8 +5,21 @@ import {
   Code2,
   BriefcaseBusiness,
   Globe,
+  ChevronDown,
 } from "lucide-react";
+
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
+
+const skills = [
+  "React",
+  "JavaScript",
+  "Vercel",
+  "Tailwind CSS",
+  "Git",
+  "GitHub Actions",
+  "Figma",
+  "API",
+];
 
 const Hero = () => {
   return (
@@ -18,7 +31,7 @@ const Hero = () => {
           alt="Hero background"
           className="w-full h-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 to-background via-background/80" />
+        <div className="absolute inset-0 bg-linear-to-b from-background/20 to-background via-background/80" />
       </div>
 
       {/* Green Dots */}
@@ -55,7 +68,7 @@ const Hero = () => {
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animate-fade-100">
                 Crafting{" "}
-                <span className="text-primary glass-text">
+                <span className="text-primary glow-text">
                   digital
                 </span>
                 <br />
@@ -80,7 +93,9 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5" />
               </Button>
 
-              <AnimatedBorderButton />
+              <AnimatedBorderButton>
+                Download CV
+              </AnimatedBorderButton>
             </div>
 
             {/* Social Links */}
@@ -108,14 +123,14 @@ const Hero = () => {
 
           {/* Right Column - Profile Image */}
           <div className="relative animate-fade-in animate-fade-300">
-            {/* Profile Image */}
             <div className="relative max-w-md mx-auto">
+
               <div
-                className="absolute inset-0 
-                rounded-3xl bg-gradient-to-br 
-                from-primary/30 via-transparent 
-                to-primary/10 blur-2xl animate-pulse"
+                className="absolute inset-0 rounded-3xl bg-linear-to-br
+                from-primary/30 via-transparent to-primary/10
+                blur-2xl animate-pulse"
               />
+
               <div className="relative glass rounded-3xl p-2 glow-border">
                 <img
                   src="/projects/profile-photo.jpg"
@@ -124,19 +139,64 @@ const Hero = () => {
                 />
 
                 {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 p-3 animate-float">
-                  <div className="flex gap-3">
-                    <div/>
-                    <span>Available for work</span>
+                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-sm font-medium">
+                      Available for work
+                    </span>
                   </div>
                 </div>
-                {/* Sates Badge */}
+
+                {/* Stats Badge */}
+                <div className="absolute glass -top-4 -left-4 rounded-xl px-4 py-3 animate-float animate-fade-500">
+                  <div className="text-2xl font-bold text-primary">
+                    2+
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Years Exp.
+                  </div>
+                </div>
 
               </div>
             </div>
           </div>
-
         </div>
+
+        {/* Skills Section */}
+        <div className="mt-20 animate-fade-in animate-fade-600">
+          <p className="text-sm text-muted-foreground mb-6 text-center">
+            Technologies I work with
+          </p>
+
+          <div className="relative overflow-hidden">
+            <div className="flex animate-marquee">
+              {[...skills, ...skills].map((skill, idx) => (
+                <div
+                  key={idx}
+                  className="shrink-0 px-8 py-4"
+                >
+                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+                    {skill}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in animate-fade-800">
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+        >
+          <span className="text-xs uppercase tracking-wider">
+            Scroll
+          </span>
+          <ChevronDown className="w-6 h-6 animate-bounce" />
+        </a>
       </div>
     </section>
   );
