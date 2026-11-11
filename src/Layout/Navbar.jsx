@@ -1,7 +1,7 @@
 
 import Button from "@/components/Button";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navlink = [
   { href: "#about", label: "About" },
@@ -12,8 +12,24 @@ const navlink = [
 
 function Navbar() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 pointer-events-auto bg-transparent py-5">
+    <header
+  className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500
+  ${isScrolled ? "glass-strong py-3" : "bg-transparent py-5"}`}
+>
+
       <nav className="container mx-auto flex items-center justify-between px-6">
         <a
           href="#"
@@ -38,35 +54,36 @@ function Navbar() {
         </div>
 
         {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button size="sm">
-              Contact Me
-            </Button>
-          </div>
+        <div className="hidden md:block">
+          <Button size="sm">
+            Contact Me
+          </Button>
+        </div>
 
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 text-foreground cursor-pointer" onClick={() => setMobileMenuOpen((prev) => !prev)}>
-            {isMobileMenuOpen ? <X size={24}  /> : <Menu size={24} />}
-          </button>
+        {/* Mobile Menu Button */}
+        <button className="md:hidden p-2 text-foreground cursor-pointer" onClick={() => setMobileMenuOpen((prev) => !prev)}>
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </nav>
 
-        {/* Mobile Menu */}
-        { isMobileMenuOpen && (<div className="md:hidden glass-strong animate-fade-in">
-            <div className="container flex mx-auto py-6 px-6 flex-col gap-3">
-              {navlink.map((link, index) => (
-              <a
-                className="text-lg text-muted-foreground hover:text-foreground py-2"
-                key={index}
-                href={link.href}
-              >
-                {link.label}
-              </a>
-              ))}
-              <Button>
-                Contact Me
-              </Button>
-            </div>
-        </div>)}
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (<div className="md:hidden glass-strong animate-fade-in">
+        <div className="container flex mx-auto py-6 px-6 flex-col gap-3">
+          {navlink.map((link, index) => (
+            <a
+              className="text-lg text-muted-foreground hover:text-foreground py-2"
+              key={index}
+              onClick={() => setMobileMenuOpen(false)}
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          ))}
+          <Button onClick={() => setMobileMenuOpen(false)}>
+            Contact Me
+          </Button>
+        </div>
+      </div>)}
     </header>
   );
 }

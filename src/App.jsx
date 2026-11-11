@@ -1,5 +1,5 @@
 import Navbar from "@/Layout/Navbar.jsx";
-import About from "@/Sections/About.jsx";
+import About from "@/Sections/About";
 import Contact from "@/Sections/Contact.jsx";
 import Experience from "@/Sections/Experience.jsx";
 import Hero from "@/Sections/Hero.jsx";
