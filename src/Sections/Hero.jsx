@@ -2,11 +2,12 @@
 import Button from "@/components/Button";
 import {
   ArrowRight,
-  Code2,
   BriefcaseBusiness,
   Globe,
   ChevronDown,
 } from "lucide-react";
+
+import { FaGithub } from "react-icons/fa";
 
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 
@@ -105,7 +106,7 @@ const Hero = () => {
               </span>
 
               {[
-                { icon: Code2, href: "#", label: "Code" },
+                { icon: FaGithub, href: "#", label: "GitHub" },
                 { icon: BriefcaseBusiness, href: "#", label: "LinkedIn" },
                 { icon: Globe, href: "#", label: "Twitter" },
               ].map((social, idx) => (
