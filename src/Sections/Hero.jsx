@@ -5,6 +5,7 @@ import {
   BriefcaseBusiness,
   Globe,
   ChevronDown,
+  Download,
 } from "lucide-react";
 
 import { FaGithub } from "react-icons/fa";
@@ -95,6 +96,7 @@ const Hero = () => {
               </Button>
 
               <AnimatedBorderButton>
+                <Download className="w-5 h-5" />
                 Download CV
               </AnimatedBorderButton>
             </div>
