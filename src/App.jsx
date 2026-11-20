@@ -1,10 +1,10 @@
-import Navbar from "@/Layout/Navbar.jsx";
+import Navbar from "@/Layout/Navbar";
 import About from "@/Sections/About";
-import Contact from "@/Sections/Contact.jsx";
-import Experience from "@/Sections/Experience.jsx";
+import Contact from "@/Sections/Contact";
+import Experience from "@/Sections/Experience";
 import Hero from "@/Sections/Hero.jsx";
-import Projects from "@/Sections/Projects.jsx";
-import Testimonials from "@/Sections/Testimonials.jsx";
+import Projects from "@/Sections/Projects";
+import Testimonials from "@/Sections/Testimonials";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Experience />
         <Testimonials />
         <Contact />
+        
       </main>
     </div>
   );
